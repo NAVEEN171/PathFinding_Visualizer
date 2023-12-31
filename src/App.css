@@ -1,0 +1,725 @@
+
+.App-header {
+  background-color: #282c34;
+  height:calc( 100vh + 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+.gridwrapper{
+  width:100%;
+  height:calc(100vh - 130px);
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.pathtext{
+  padding:2px;
+  user-select: none;
+}
+
+.row{
+ display:flex;
+ 
+ 
+}
+.path{
+  border-bottom: white;
+  color:white;
+  width:100%;
+  height:30px;
+  font-weight:400;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  background-color: #563D7C;
+  
+
+  
+  
+
+
+}
+
+.pathtext{
+  cursor:pointer;
+  letter-spacing: 0.5px;
+  transition:all 0.5s ease;
+  
+}
+
+.pathtext:hover{
+  letter-spacing: 2px;
+  transform:scale(1.2);
+  color:rgb(12, 221, 68);
+
+
+}
+.navbar{
+  background-color: #563D7C;
+  width:100%;
+  height:70px;
+  
+
+}
+.wrapper{
+  width:100%;
+  height:40px;
+ 
+
+  display:flex;
+  justify-content: center;
+}
+.rat{
+  user-select: none;
+
+  font-weight: 500;
+  font-size:20px ;
+  font-weight:500;
+  border:none;
+  width:150px;
+  cursor:pointer;
+   padding:10px;
+  position:relative;
+  letter-spacing: 0.7px;
+  transition:0.5s;
+  overflow:hidden;
+  color:white;
+ 
+background-image: linear-gradient(90deg,#775bea,#ff72c0);
+  
+  padding:3px;
+   
+border-radius: 10px;
+}
+.rat-none{
+  background-image: linear-gradient(90deg, #b39aff, #ffa5d6) !important;
+  color:red !important;
+}
+.rat:hover{
+ 
+  color:black;
+ 
+}
+.bordertop{
+  border-top:0.1px solid rgb(138, 43, 226,0.4) !important;
+}
+
+.visited-node{
+  background-color:rgb(92, 211, 230)  ;
+  border-top-color:white !important;
+  border-left-color:white !important;
+  border-bottom-color:white !important;
+  border-right-color:white !important;
+  
+  animation:visitanimate 300ms ease-out;
+  
+}
+.visited-node-basic{
+  background-color:rgb(92, 211, 230)  ;
+  border-top-color:white !important;
+  border-left-color:white !important;
+  border-bottom-color:white !important;
+  border-right-color:white !important;
+  
+  
+  
+}
+.corner-1{
+  
+  border-top-color:rgb(138, 43, 226,0.4) !important;
+  border-left-color:rgb(138, 43, 226,0.4) !important;
+  border-bottom-color:white !important;
+  border-right-color:white !important;
+}
+.corner-2{
+ 
+  border-bottom-color:rgb(138, 43, 226,0.4) !important;
+  border-left-color:rgb(138, 43, 226,0.4) !important;
+  border-top-color:white !important;
+  border-right-color:white !important;
+}
+.corner-3{
+ 
+  border-right-color:rgb(138, 43, 226,0.4) !important;
+  border-top-color:rgb(138, 43, 226,0.4) !important;
+  border-left-color:white !important;
+  border-bottom-color:white !important;
+}
+.corner-4{
+ 
+  border-bottom-color:rgb(138, 43, 226,0.4) !important;
+  border-right-color:rgb(138, 43, 226,0.4) !important;
+  border-left-color:white !important;
+  border-top-color:white !important;
+}
+
+.visited-top{
+ 
+  border-top-color:rgb(138, 43, 226,0.4) !important;
+  border-left-color:white !important;
+  border-bottom-color:white !important;
+  border-right-color:white !important;
+}
+.visited-left{
+  
+  border-top-color: white !important;
+  border-left-color:rgb(138, 43, 226,0.4) !important;
+  border-bottom-color:white !important;
+  border-right-color:white !important;
+}
+.visited-right{
+
+  border-top-color: white !important;
+  border-right-color:rgb(138, 43, 226,0.4) !important;
+  border-bottom-color:white !important;
+  border-left-color:white !important;
+}
+.visited-bottom{
+ 
+  border-top-color: white !important;
+  border-bottom-color:rgb(138, 43, 226,0.4) !important;
+  border-right-color:white !important;
+  border-left-color:white !important;
+}
+.pathwrapper{
+
+width:100%;
+display:flex;
+
+justify-content: center;
+
+}
+.patherror {
+  margin-top: 10px;
+  background-color: #ffe6cc; /* Light orange background */
+  border: 1px solid #ff9900; /* Orange border */
+  color: red;
+  width: 80%;
+  padding: 10px;
+  text-align: center;
+  height: 15px;
+  line-height: 15px;
+  opacity: 0; /* Start with 0 opacity */
+  transition: opacity 1s ease; 
+  user-select: none;/* Transition opacity over 0.5 seconds */
+}
+
+.patherror.show {
+  opacity: 1; /* Show element with 1 opacity */
+}
+
+
+@keyframes visitanimate{
+  
+ 
+
+ 
+0%{
+    border-radius: 50%;
+    background-color: rgb(40, 234, 173)  ;
+    opacity:1;
+  }
+  
+  
+  100%{
+    opacity:1;
+    background-color:rgb(92, 211, 230)  ;
+    border-radius:0;
+  
+  }
+}
+@keyframes path-animate{
+0%{
+  transform:scale(.6);
+  background-color:rgb(255, 254, 106);
+}
+
+50% {
+  transform:scale(1.2);
+  background-color:rgb(255, 254, 106);
+}
+100% {
+  transform:scale(1.0);
+  background-color:rgb(255, 254, 106);
+}}
+.box{
+  margin-right:10px;
+  height:24px;
+  width:24px;
+
+  border:0.1px solid black ;
+}
+
+.optionswrapper{
+  display:flex;
+  width:100%;
+  
+  align-items: center;
+  
+  justify-content:flex-start;
+  flex-wrap:wrap;
+}
+.item{
+  display:flex;
+  margin-top:10px;
+  margin-left:30px;
+  line-height:25px;
+  user-select:none;
+  
+  
+
+}
+.arrow{
+  margin-right:10px;
+ border:1px solid black;
+  background-color:rgb(19, 181, 178);color:white; 
+}
+.made{
+  user-select: none;
+  outline: none;
+
+}
+.buttons,.butt{
+  outline: none;
+
+ 
+  
+  color:white;
+  font-weight: 500;
+  font-size:20px ;
+  border:none;
+  cursor:pointer;
+  background-color: transparent;
+
+  
+  
+}
+
+.changeS,.changeE{
+  user-select: none;
+  font-weight: 500;
+  font-size:20px ;
+  font-weight:500;
+  border:none;
+  cursor:pointer;
+  background-color: transparent;
+  position:relative;
+  letter-spacing: 0.7px;
+  transition:0.5s;
+  overflow:hidden;
+  color:white;
+  padding:3px;
+}
+.changeS:hover,.changeE:hover{
+  color:rgb(12, 221, 68);
+  
+}
+
+.red{
+ color:red !important;
+}
+
+.buttons-wrapper{
+  background-color:#563D7C;
+  height:40px;
+
+  display: flex;
+  align-items: center;
+  width:100%;
+  justify-content: space-evenly;
+}
+.startbutton{
+  font-weight: 500;
+  font-size:20px ;
+  font-weight:500;
+  border:none;
+  cursor:pointer;
+  background-color: transparent;
+  position:relative;
+  letter-spacing: 0.7px;
+  transition:0.5s;
+  overflow:hidden;
+  width:auto;
+  padding:10px;
+  color:#03e9f4;
+
+  
+}
+.startbutton:hover{
+  background-color:hsl(183, 98%, 48%) ;
+  
+  color:black;
+  box-shadow:0 0 5px #03e9f4,
+              0 0 5px #03e9f4,
+              0 0 10px #03e9f4,
+              0 0  50px #03e9f4;
+  
+}
+
+span{
+  font-size: 10px;
+  padding:5px;
+  
+}
+.down:hover{
+  color:rgb(12, 221, 68);
+}
+.butt{
+  display:flex;
+  align-items: center;
+ 
+  justify-content: center;
+
+}
+.buttons:hover,.butt:hover{
+  color:rgb(12, 221, 68);
+  outline:none;
+  background-color: transparent;
+}
+
+.buttonwrapper{
+  display:flex;
+  width:100%;
+  justify-content:space-evenly;
+  align-items: center;
+  height:40px;
+  flex-wrap: wrap;
+}
+.made{
+  margin-left: 15px;
+}
+.is-path{
+  background-color: yellow;
+  animation:path-animate 250ms linear;
+
+}
+
+body{
+  margin:0;
+  padding:0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.App{
+  height:110vh;
+  
+  width:100%;
+ 
+}
+.grid{
+  top:10px;
+  height:calc(100vh-220px);
+  width:100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.drop-down,.drop-down2{
+  position:relative;
+}
+.drop-down-menu2{
+  position:absolute;
+  left:0;
+  top:30px;
+
+  width:120px;
+  padding:.75rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.1);
+  
+  opacity:0;
+  transition: opacity 0.3s ease-in-out;
+  background-color: #a983e2;
+  font-size:16px;
+  font-weight: 500;
+  color:white;
+}
+.drop-down-menu{
+  position:absolute;
+  left:0;
+  top:30px;
+  width:200px;
+  padding:.75rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.1);
+  
+  opacity:0;
+  transition: opacity 0.3s ease-in-out;
+  background-color: #a983e2;
+  font-size:16px;
+  font-weight: 500;
+  color:white;
+}
+.drop-down-menu div:hover,.drop-down-menu2 div:hover{
+     background-color: rgb(26, 188, 156);
+     cursor:pointer;
+}
+.drop-down-menu.active,.drop-down-menu2.active {
+  opacity: 1;
+  z-index:1; /* Show the menu when active */
+}
+.speeds .drop-down-menu {
+  width:120px;
+  
+
+
+  }
+.drop-down-menu div,.drop-down-menu2 div{
+  position:relative;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding:5px;
+  user-select:none;
+  text-align: center;
+
+}
+.drop-down-menu div:hover::before ,.drop-down-menu2 div:hover::before{
+         content:'';
+         position: absolute;
+         left:0;
+         top:0;
+         width:3px;
+         height: 100%;
+         background-color:white;
+
+}
+.finish{
+  border:1px solid black;
+  margin-right:10px;
+}
+@media (max-width:1300px) and (min-width:900px){
+  .speeds .drop-down-menu {
+   
+    width:80px;
+  
+    }
+}
+
+
+@media (max-width:1000px) and (min-width:900px){
+  #dropp{
+    width:120px;
+    font-size: 14px;
+  }
+  .made,.butt{
+    font-size: 18px;
+  }
+ .speeds .drop-down-menu {
+  font-size: 14px;
+  
+
+  }
+
+  .algos .drop-down-menu{
+    font-size:14px;
+    width:180px;
+
+  }
+ 
+}
+@media (max-width:900px) and (min-width:800px) {
+  #dropp{
+    width:120px;
+    font-size: 14px;
+  } 
+  .item{
+margin-left: 10px;
+  }
+  .optionswrapper{
+    font-size:14px;
+  }
+  .speeds .drop-down-menu {
+    font-size: 14px;
+    width:80px;
+  
+    }
+    .made,.butt{
+      font-size: 16px;
+    }
+    .changeS,.changeE{
+      font-size:15px;
+    }
+    .algos .drop-down-menu{
+      font-size:13px;
+      width:180px;
+  
+    }
+  
+  }
+  @media (max-width:800px) and (min-width:750px)  {
+    .buttons-wrapper{
+      height:40px;
+    }
+    .item{
+      margin-left: 10px;
+        }
+    .made,.butt{
+      font-size: 14px;
+    }
+    .optionswrapper{
+      font-size:14px;
+    }
+    #dropp{
+      width:120px;
+      font-size: 13px;
+    } 
+    .speeds .drop-down-menu {
+      font-size: 13px;
+      width:80px;
+    
+      }
+      .changeS,.changeE{
+        font-size:12px;
+      }
+      .algos .drop-down-menu{
+        font-size:12px;
+        width:150px;
+    
+      }
+    .path{
+      font-size: 17px;
+    }
+  }
+ 
+  @media (max-width:750px) and (min-width:500px) {
+    .node{
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .item{
+      margin-left: 10px;
+        }
+    .buttonwrapper{
+      height:50px;
+      font-size:14px;
+      justify-content: flex-start;
+    }
+    .optionswrapper{
+      font-size:12px;
+    }
+    
+    
+    .path{
+      height:20px;
+    }
+   
+    .made{
+      font-size: 14px;
+    }
+    #dropp{
+      width:100px;
+      font-size: 12px;
+
+
+    } 
+    .speeds .drop-down-menu {
+      font-size: 12px;
+      width:90px;
+      margin-left:10px;
+    
+      }
+      .changeS,.changeE{
+        font-size:13px;
+      }
+      .algos .drop-down-menu{
+        font-size:10px;
+        width:110px;
+        margin-left: 10px;
+    
+      }
+    .path{
+      font-size: 16px;
+    }
+  }
+  @media (max-width:330px){
+    .made{
+      font-size: 8px;
+    }
+    .navbar{
+      border-bottom:none;
+    }
+   }
+  
+  @media (max-width:500px){
+    .startbutton{
+padding:5px;
+    }
+    .startbutton:hover{
+      
+    box-shadow:0 0 3px #03e9f4,
+    0 0 3px #03e9f4,
+    0 0 10px #03e9f4,
+    0 0  30px #03e9f4;}
+    .drop-down-menu div:hover{
+      background-color:transparent;
+    }
+    .drop-down-menu div:hover::before {
+      background-color: transparent;
+    }
+    .node{
+      font-size: 12px;
+      font-weight: 300;
+    }
+    .patherror{
+      font-size: 10px;
+    }
+    
+    .rat{
+      width:120px;
+      font-size:15px;
+      padding:5px;
+    }
+    .item{
+      margin-left: 10px;
+     
+        }
+     .App{
+      height:118vh;
+     }   
+  
+    .buttonwrapper{
+      height:50px;
+      font-size:13px;
+      justify-content: flex-start;
+    }
+    .optionswrapper{
+      font-size:10px;
+    }
+    
+    .made{
+      font-size: 10px;
+    }
+    #dropp{
+      width:80px;
+      font-size: 9px;
+      margin-left:10px;
+    } 
+    .algos .drop-down-menu{
+      font-size:9px;
+      width:100px;
+      margin-left: 10px;
+  
+    }
+    .speeds .drop-down-menu {
+      font-size: 9px;
+      width:80px;
+      margin-left:10px;
+    
+      }
+    .changeS,.changeE{
+      font-size:10px;
+    }
+    .path{
+      height:20px;
+      font-size: 13px;
+    }
+  } 
+
+  
+
