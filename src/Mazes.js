@@ -3,22 +3,16 @@ export default function Mazes(grid, startNode, endNode) {
     const rows = grid.length-2;
     const cols = grid[0].length-2;
     let gapSize;let circleSpacing;let circles;
-    if(cols<12){
-          gapSize=1;
-          circleSpacing=2;
-          circles=2;  
-    }
-    else if(cols/rows>1 && rows>16) {
+    console.log(rows,cols)
+    if(rows+2>19 && cols+2>19){
+    
         gapSize = 2;
-     circleSpacing =3; 
-     circles=3 
+        circleSpacing =3; 
+        circles=3 
     }
-  else  if(rows>cols ){
-     gapSize = 1;
-circleSpacing =3; 
-circles=2
-
-    }
+    
+ 
+ 
     else{
         gapSize=1;
         circleSpacing=2;
